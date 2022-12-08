@@ -1,13 +1,15 @@
 import readline from "readline";
-import { getUrl } from "./getUrl.js";
+import os from "os";
+import { list } from "./list.js";
 
 const start = () => {
   const args = process.argv.slice(2);
   const username = args[0].startsWith("--username") ? args[0].split("=")[1] : undefined;
-  const currentDir = getUrl(import.meta.url, "", "");
+  const userHomeDir = os.homedir();
+  let currentDir = userHomeDir;
 
   console.log(`Welcome to the File Manager, ${username}!`);
-  console.log(`You are currently in ${currentDir}`);
+  console.log(`You are currently in ${userHomeDir}`);
 
   const rl = readline.createInterface({
     input: process.stdin,
@@ -19,6 +21,10 @@ const start = () => {
   rl.on("line", (line) => {
     const commandArr = line.trim().split(" ");
     switch (commandArr[0]) {
+      case "ls":
+        list(currentDir);
+        rl.prompt();
+        break;
       case ".exit":
         rl.close();
         break;
