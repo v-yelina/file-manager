@@ -1,4 +1,5 @@
 import { readdir } from "node:fs/promises";
+import { errorHandler } from "./errorHandler";
 
 export const list = async (dirUrl) => {
   readdir(dirUrl, { withFileTypes: true })
@@ -12,6 +13,6 @@ export const list = async (dirUrl) => {
       console.table(filesInfo.sort((a, b) => a.Type.localeCompare(b.Type) || b.Name - a.Name));
     })
     .catch((err) => {
-      console.log(`Operation failed: ${err.message}`);
+      errorHandler(err);
     });
 };
