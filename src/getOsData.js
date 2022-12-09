@@ -28,7 +28,7 @@ export const getOsData = (arg) => {
       break;
     default:
       console.log(
-        `Error: unknown argument --${arg}, available arguments: --EOL, --cpus, --homedir, --username, --architecture`
+        `Operation failed: unknown argument --${arg}, available arguments: --EOL, --cpus, --homedir, --username, --architecture`
       );
       break;
   }
