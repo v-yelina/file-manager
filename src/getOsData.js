@@ -8,7 +8,11 @@ export const getOsData = (arg) => {
       break;
     case "cpus":
       console.log("Your host machine CPUs info:");
-      console.log(os.cpus());
+      console.log(
+        os.cpus().map((cpu) => {
+          return { model: cpu.model, speed: cpu.speed };
+        })
+      );
       break;
     case "homedir":
       console.log("Your home directory:");
