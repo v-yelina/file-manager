@@ -1,6 +1,7 @@
 import readline from "readline";
 import os from "os";
 import { list } from "./list.js";
+import { getOsData } from "./getOsData.js";
 
 const start = () => {
   const args = process.argv.slice(2);
@@ -23,6 +24,10 @@ const start = () => {
     switch (commandArr[0]) {
       case "ls":
         list(currentDir);
+        rl.prompt();
+        break;
+      case "os":
+        getOsData(commandArr[1].slice(2));
         rl.prompt();
         break;
       case ".exit":
