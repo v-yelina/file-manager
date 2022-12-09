@@ -1,7 +1,10 @@
 import readline from "readline";
 import os from "os";
+import path from "path";
 import { list } from "./list.js";
 import { getOsData } from "./getOsData.js";
+import { calculateHash } from "./getHash.js";
+import { trimUrl } from "./trimUrl.js";
 
 const start = () => {
   const args = process.argv.slice(2);
@@ -30,9 +33,14 @@ const start = () => {
         getOsData(commandArr[1].slice(2));
         rl.prompt();
         break;
+      case "hash":
+        calculateHash(path.resolve(currentDir, trimUrl(commandArr[1])));
+        rl.prompt();
+        break;
       case ".exit":
         rl.close();
         break;
+
       default:
         // sentence = line + "\n";
         // writable.write(sentence);
