@@ -14,5 +14,13 @@ export const getOsData = (arg) => {
     case "username":
       console.log(os.userInfo().username);
       break;
+    case "architecture":
+      console.log(os.arch());
+      break;
+    default:
+      console.log(
+        `Error: unknown argument --${arg}, available arguments: --EOL, --cpus, --homedir, --username, --architecture`
+      );
+      break;
   }
 };
