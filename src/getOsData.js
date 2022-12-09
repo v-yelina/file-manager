@@ -11,5 +11,8 @@ export const getOsData = (arg) => {
     case "homedir":
       console.log(os.homedir());
       break;
+    case "username":
+      console.log(os.userInfo().username);
+      break;
   }
 };
