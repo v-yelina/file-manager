@@ -8,5 +8,8 @@ export const getOsData = (arg) => {
     case "cpus":
       console.log(os.cpus());
       break;
+    case "homedir":
+      console.log(os.homedir());
+      break;
   }
 };
