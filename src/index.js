@@ -8,6 +8,7 @@ import { trimUrl } from "./utils/trimUrl.js";
 import { compress } from "./compress.js";
 import { decompress } from "./decompress.js";
 import { checkArgsNumber } from "./utils/checkArgsNumber.js";
+import { showAvailableCommands } from "./showAvailableCommands.js";
 
 const start = async () => {
   const args = process.argv.slice(2);
@@ -70,14 +71,17 @@ const start = async () => {
         }
         rl.prompt();
         break;
+      case "--help":
+        console.table(showAvailableCommands());
+        rl.prompt();
+        break;
       case ".exit":
         rl.close();
         break;
-
       default:
-        // sentence = line + "\n";
-        // writable.write(sentence);
-        // rl.prompt();
+        console.log("Invalid input");
+        console.log("To see list of available commands enter --help");
+        rl.prompt();
         break;
     }
   }).on("close", () => {

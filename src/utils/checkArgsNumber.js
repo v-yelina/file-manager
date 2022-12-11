@@ -1,4 +1,4 @@
-const START_INFO_MESSAGE = "Operation failed! Please, enter command in format:";
+const START_INFO_MESSAGE = "Invalid input! Please, enter command in format:";
 const HASH_INFO_MESSAGE = "hash path_to_file";
 const HASH_ARGUMENTS_COUNT = 1;
 const COMPRESS_INFO_MESSAGE = "compress path_to_file path_to_destination";
