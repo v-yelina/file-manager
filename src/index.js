@@ -5,8 +5,10 @@ import { list } from "./list.js";
 import { getOsData } from "./getOsData.js";
 import { calculateHash } from "./getHash.js";
 import { trimUrl } from "./utils/trimUrl.js";
+import { compress } from "./compress.js";
+import { checkArgsNumber } from "./utils/checkArgsNumber.js";
 
-const start = () => {
+const start = async () => {
   const args = process.argv.slice(2);
   const username = args[0].startsWith("--username") ? args[0].split("=")[1] : undefined;
   const userHomeDir = os.homedir();
@@ -24,17 +26,36 @@ const start = () => {
 
   rl.on("line", (line) => {
     const commandArr = line.trim().split(" ");
-    switch (commandArr[0]) {
+    const command = commandArr[0];
+    const args = commandArr.slice(1);
+    const isNotEnoughArgs = checkArgsNumber(command, args.length);
+
+    switch (command) {
       case "ls":
         list(currentDir);
         rl.prompt();
         break;
       case "os":
-        getOsData(commandArr[1].slice(2));
+        getOsData(args[0].slice(2));
         rl.prompt();
         break;
       case "hash":
-        calculateHash(path.resolve(currentDir, trimUrl(commandArr[1])));
+        if (!isNotEnoughArgs) {
+          calculateHash(path.resolve(currentDir, trimUrl(args[0])));
+        } else {
+          console.log(isNotEnoughArgs);
+        }
+        rl.prompt();
+        break;
+      case "compress":
+        if (!isNotEnoughArgs) {
+          compress(
+            path.resolve(currentDir, trimUrl(args[0])),
+            path.resolve(currentDir, trimUrl(args[1]))
+          );
+        } else {
+          console.log(isNotEnoughArgs);
+        }
         rl.prompt();
         break;
       case ".exit":
