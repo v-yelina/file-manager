@@ -6,6 +6,7 @@ import { getOsData } from "./getOsData.js";
 import { calculateHash } from "./getHash.js";
 import { trimUrl } from "./utils/trimUrl.js";
 import { compress } from "./compress.js";
+import { decompress } from "./decompress.js";
 import { checkArgsNumber } from "./utils/checkArgsNumber.js";
 
 const start = async () => {
@@ -50,6 +51,17 @@ const start = async () => {
       case "compress":
         if (!isNotEnoughArgs) {
           compress(
+            path.resolve(currentDir, trimUrl(args[0])),
+            path.resolve(currentDir, trimUrl(args[1]))
+          );
+        } else {
+          console.log(isNotEnoughArgs);
+        }
+        rl.prompt();
+        break;
+      case "decompress":
+        if (!isNotEnoughArgs) {
+          decompress(
             path.resolve(currentDir, trimUrl(args[0])),
             path.resolve(currentDir, trimUrl(args[1]))
           );
