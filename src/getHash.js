@@ -1,6 +1,6 @@
 import { createReadStream } from "node:fs";
 import { stdout } from "node:process";
-import { errorHandler } from "./errorHandler.js";
+import { errorHandler } from "./utils/errorHandler.js";
 const { createHash } = await import("node:crypto");
 
 export const calculateHash = async (fileUrl) => {

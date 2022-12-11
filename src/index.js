@@ -4,7 +4,7 @@ import path from "path";
 import { list } from "./list.js";
 import { getOsData } from "./getOsData.js";
 import { calculateHash } from "./getHash.js";
-import { trimUrl } from "./trimUrl.js";
+import { trimUrl } from "./utils/trimUrl.js";
 
 const start = () => {
   const args = process.argv.slice(2);
@@ -48,6 +48,7 @@ const start = () => {
         break;
     }
   }).on("close", () => {
+    console.log(`\n`);
     console.log(`Thank you for using File Manager, ${username}, goodbye!`);
   });
 };

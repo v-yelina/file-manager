@@ -1,5 +1,5 @@
 import { readdir } from "node:fs/promises";
-import { errorHandler } from "./errorHandler.js";
+import { errorHandler } from "./utils/errorHandler.js";
 
 export const list = async (dirUrl) => {
   readdir(dirUrl, { withFileTypes: true })
