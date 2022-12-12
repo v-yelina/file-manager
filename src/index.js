@@ -10,6 +10,7 @@ import { decompress } from "./decompress.js";
 import { checkArgsNumber } from "./utils/checkArgsNumber.js";
 import { showAvailableCommands } from "./showAvailableCommands.js";
 import { read } from "./read.js";
+import { create } from "./create.js";
 
 const start = async () => {
   const args = process.argv.slice(2);
@@ -41,6 +42,14 @@ const start = async () => {
       case "cat":
         if (!isNotEnoughArgs) {
           read(path.resolve(currentDir, trimUrl(args[0])));
+        } else {
+          console.log(isNotEnoughArgs);
+        }
+        rl.prompt();
+        break;
+      case "add":
+        if (!isNotEnoughArgs) {
+          create(path.resolve(currentDir, trimUrl(args[0])));
         } else {
           console.log(isNotEnoughArgs);
         }
