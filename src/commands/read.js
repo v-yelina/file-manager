@@ -1,5 +1,5 @@
 import fs from "fs";
-import { errorHandler } from "./utils/errorHandler.js";
+import { errorHandler } from "../utils/errorHandler.js";
 
 export const read = async (fileToReadPath) => {
   fs.readFile(fileToReadPath, "utf8", (err, data) => {

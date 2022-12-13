@@ -1,5 +1,5 @@
 import { rm } from "fs/promises";
-import { errorHandler } from "./utils/errorHandler.js";
+import { errorHandler } from "../utils/errorHandler.js";
 
 export const deleteFile = (fileToDeleteUrl) => {
   rm(fileToDeleteUrl)

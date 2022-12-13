@@ -1,5 +1,5 @@
 import fs from "fs";
-import { errorHandler } from "./utils/errorHandler.js";
+import { errorHandler } from "../utils/errorHandler.js";
 
 export const rename = async (currentFileName, newFileName) => {
   fs.access(currentFileName, fs.constants.F_OK, (err) => {

@@ -1,21 +1,21 @@
 import readline from "readline";
 import os from "os";
 import path from "path";
-import { list } from "./list.js";
-import { getOsData } from "./getOsData.js";
-import { calculateHash } from "./getHash.js";
+import { list } from "./commands/list.js";
+import { getOsData } from "./commands/getOsData.js";
+import { calculateHash } from "./commands/getHash.js";
 import { trimUrl } from "./utils/trimUrl.js";
-import { compress } from "./compress.js";
-import { decompress } from "./decompress.js";
+import { compress } from "./commands/compress.js";
+import { decompress } from "./commands/decompress.js";
 import { checkArgsNumber } from "./utils/checkArgsNumber.js";
-import { showAvailableCommands } from "./showAvailableCommands.js";
-import { read } from "./read.js";
-import { create } from "./create.js";
-import { rename } from "./rename.js";
-import { copy } from "./copy.js";
-import { move } from "./move.js";
-import { deleteFile } from "./delete.js";
-import { up } from "./up.js";
+import { showAvailableCommands } from "./commands/showAvailableCommands.js";
+import { read } from "./commands/read.js";
+import { create } from "./commands/create.js";
+import { rename } from "./commands/rename.js";
+import { copy } from "./commands/copy.js";
+import { move } from "./commands/move.js";
+import { deleteFile } from "./commands/delete.js";
+import { up } from "./commands/up.js";
 import { welcome } from "./welcome.js";
 
 const start = async () => {

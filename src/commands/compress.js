@@ -1,18 +1,18 @@
 import fs from "fs";
 import zlib from "zlib";
-import { errorHandler } from "./utils/errorHandler.js";
+import { errorHandler } from "../utils/errorHandler.js";
 
-export const decompress = (fileToDecompressUrl, destinationFileUrl) => {
-  const readable = fs.createReadStream(fileToDecompressUrl);
+export const compress = (fileToCompressUrl, destinationFileUrl) => {
+  const readable = fs.createReadStream(fileToCompressUrl);
   const writable = fs.createWriteStream(destinationFileUrl);
 
-  const brotli = zlib.createBrotliDecompress();
+  const brotli = zlib.createBrotliCompress();
 
   readable
     .pipe(brotli)
     .pipe(writable)
     .on("finish", () => {
-      console.log("Successfully done decompessing");
+      console.log("Successfully done compessing");
       writable.end();
     });
 

@@ -1,6 +1,6 @@
 import { createReadStream, createWriteStream } from "node:fs";
 import { unlink } from "fs/promises";
-import { errorHandler } from "./utils/errorHandler.js";
+import { errorHandler } from "../utils/errorHandler.js";
 
 export const move = (targetFileUrl, destinationFileUrl) => {
   const readable = createReadStream(targetFileUrl);

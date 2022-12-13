@@ -1,5 +1,5 @@
 import { copyFile, constants } from "node:fs";
-import { errorHandler } from "./utils/errorHandler.js";
+import { errorHandler } from "../utils/errorHandler.js";
 
 export const copy = (source, destination) => {
   copyFile(source, destination, constants.COPYFILE_EXCL, (err) => {
