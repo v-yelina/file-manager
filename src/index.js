@@ -17,6 +17,7 @@ import { move } from "./commands/move.js";
 import { deleteFile } from "./commands/delete.js";
 import { up } from "./commands/up.js";
 import { welcome } from "./welcome.js";
+import { cd } from "./commands/cd.js";
 
 const start = async () => {
   const args = process.argv.slice(2);
@@ -41,6 +42,15 @@ const start = async () => {
     switch (command) {
       case "up":
         currentDir = up(currentDir);
+        console.log(`\nYou are currently in ${currentDir}`);
+        rl.prompt();
+        break;
+      case "cd":
+        if (!isNotEnoughArgs) {
+          currentDir = cd(currentDir, trimUrl(args[0]));
+        } else {
+          console.log(isNotEnoughArgs);
+        }
         console.log(`\nYou are currently in ${currentDir}`);
         rl.prompt();
         break;

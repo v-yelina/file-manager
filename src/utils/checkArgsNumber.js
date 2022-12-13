@@ -17,8 +17,13 @@ const MOVE_INFO_MESSAGE = "mv path_to_file path_to_new_directory";
 const MOVE_ARGUMENTS_COUNT = 2;
 const DELETE_INFO_MESSAGE = "rm path_to_file";
 const DELETE_ARGUMENTS_COUNT = 1;
+const CD_INFO_MESSAGE = "cd path_to_directory";
+const CD_ARGUMENTS_COUNT = 1;
 
 export const checkArgsNumber = (command, num) => {
+  if (command === "cd" && num < CD_ARGUMENTS_COUNT) {
+    return `${START_INFO_MESSAGE} ${CD_INFO_MESSAGE}`;
+  }
   if (command === "cat" && num < READ_ARGUMENTS_COUNT) {
     return `${START_INFO_MESSAGE} ${READ_INFO_MESSAGE}`;
   }
