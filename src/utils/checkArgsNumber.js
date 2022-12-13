@@ -15,6 +15,8 @@ const COPY_INFO_MESSAGE = "cp path_to_file path_to_new_directory";
 const COPY_ARGUMENTS_COUNT = 2;
 const MOVE_INFO_MESSAGE = "mv path_to_file path_to_new_directory";
 const MOVE_ARGUMENTS_COUNT = 2;
+const DELETE_INFO_MESSAGE = "rm path_to_file";
+const DELETE_ARGUMENTS_COUNT = 1;
 
 export const checkArgsNumber = (command, num) => {
   if (command === "cat" && num < READ_ARGUMENTS_COUNT) {
@@ -31,6 +33,9 @@ export const checkArgsNumber = (command, num) => {
   }
   if (command === "mv" && num < MOVE_ARGUMENTS_COUNT) {
     return `${START_INFO_MESSAGE} ${MOVE_INFO_MESSAGE}`;
+  }
+  if (command === "rm" && num < DELETE_ARGUMENTS_COUNT) {
+    return `${START_INFO_MESSAGE} ${DELETE_INFO_MESSAGE}`;
   }
   if (command === "cat" && num < READ_ARGUMENTS_COUNT) {
     return `${START_INFO_MESSAGE} ${READ_INFO_MESSAGE}`;

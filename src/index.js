@@ -14,6 +14,7 @@ import { create } from "./create.js";
 import { rename } from "./rename.js";
 import { copy } from "./copy.js";
 import { move } from "./move.js";
+import { deleteFile } from "./delete.js";
 
 const start = async () => {
   const args = process.argv.slice(2);
@@ -86,6 +87,14 @@ const start = async () => {
             path.resolve(currentDir, trimUrl(args[0])),
             path.resolve(currentDir, trimUrl(args[1]))
           );
+        } else {
+          console.log(isNotEnoughArgs);
+        }
+        rl.prompt();
+        break;
+      case "rm":
+        if (!isNotEnoughArgs) {
+          deleteFile(path.resolve(currentDir, trimUrl(args[0])));
         } else {
           console.log(isNotEnoughArgs);
         }
