@@ -16,14 +16,14 @@ import { copy } from "./copy.js";
 import { move } from "./move.js";
 import { deleteFile } from "./delete.js";
 import { up } from "./up.js";
+import { welcome } from "./welcome.js";
 
 const start = async () => {
   const args = process.argv.slice(2);
   const username = args[0].startsWith("--username") ? args[0].split("=")[1] : undefined;
   let currentDir = os.homedir();
 
-  console.log(`Welcome to the File Manager, ${username}!`);
-  console.log(`You are currently in ${userHomeDir}`);
+  welcome(username, currentDir);
 
   const rl = readline.createInterface({
     input: process.stdin,
@@ -41,11 +41,12 @@ const start = async () => {
     switch (command) {
       case "up":
         currentDir = up(currentDir);
-        console.log(`You are currently in ${currentDir}`);
+        console.log(`\nYou are currently in ${currentDir}`);
         rl.prompt();
         break;
       case "ls":
         list(currentDir);
+        console.log(`\nYou are currently in ${currentDir}`);
         rl.prompt();
         break;
       case "cat":
@@ -54,6 +55,7 @@ const start = async () => {
         } else {
           console.log(isNotEnoughArgs);
         }
+        console.log(`\nYou are currently in ${currentDir}`);
         rl.prompt();
         break;
       case "add":
@@ -62,6 +64,7 @@ const start = async () => {
         } else {
           console.log(isNotEnoughArgs);
         }
+        console.log(`\nYou are currently in ${currentDir}`);
         rl.prompt();
         break;
       case "rn":
@@ -73,6 +76,7 @@ const start = async () => {
         } else {
           console.log(isNotEnoughArgs);
         }
+        console.log(`\nYou are currently in ${currentDir}`);
         rl.prompt();
         break;
       case "cp":
@@ -84,6 +88,7 @@ const start = async () => {
         } else {
           console.log(isNotEnoughArgs);
         }
+        console.log(`\nYou are currently in ${currentDir}`);
         rl.prompt();
         break;
       case "mv":
@@ -95,6 +100,7 @@ const start = async () => {
         } else {
           console.log(isNotEnoughArgs);
         }
+        console.log(`\nYou are currently in ${currentDir}`);
         rl.prompt();
         break;
       case "rm":
@@ -103,10 +109,12 @@ const start = async () => {
         } else {
           console.log(isNotEnoughArgs);
         }
+        console.log(`\nYou are currently in ${currentDir}`);
         rl.prompt();
         break;
       case "os":
         getOsData(args[0].slice(2));
+        console.log(`\nYou are currently in ${currentDir}`);
         rl.prompt();
         break;
       case "hash":
@@ -115,6 +123,7 @@ const start = async () => {
         } else {
           console.log(isNotEnoughArgs);
         }
+        console.log(`\nYou are currently in ${currentDir}`);
         rl.prompt();
         break;
       case "compress":
@@ -126,6 +135,7 @@ const start = async () => {
         } else {
           console.log(isNotEnoughArgs);
         }
+        console.log(`\nYou are currently in ${currentDir}`);
         rl.prompt();
         break;
       case "decompress":
@@ -137,24 +147,25 @@ const start = async () => {
         } else {
           console.log(isNotEnoughArgs);
         }
+        console.log(`\nYou are currently in ${currentDir}`);
         rl.prompt();
         break;
       case "--help":
         console.table(showAvailableCommands());
+        console.log(`\nYou are currently in ${currentDir}`);
         rl.prompt();
         break;
       case ".exit":
+        console.log(`\nYou are currently in ${currentDir}`);
         rl.close();
         break;
       default:
-        console.log("Invalid input");
-        console.log("To see list of available commands enter --help");
+        console.log("Invalid input\nTo see list of available commands enter --help");
         rl.prompt();
         break;
     }
   }).on("close", () => {
-    console.log(`\n`);
-    console.log(`Thank you for using File Manager, ${username}, goodbye!`);
+    console.log(`\nThank you for using File Manager, ${username}, goodbye!`);
   });
 };
 
