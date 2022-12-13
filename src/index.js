@@ -15,12 +15,12 @@ import { rename } from "./rename.js";
 import { copy } from "./copy.js";
 import { move } from "./move.js";
 import { deleteFile } from "./delete.js";
+import { up } from "./up.js";
 
 const start = async () => {
   const args = process.argv.slice(2);
   const username = args[0].startsWith("--username") ? args[0].split("=")[1] : undefined;
-  const userHomeDir = os.homedir();
-  let currentDir = userHomeDir;
+  let currentDir = os.homedir();
 
   console.log(`Welcome to the File Manager, ${username}!`);
   console.log(`You are currently in ${userHomeDir}`);
@@ -39,6 +39,11 @@ const start = async () => {
     const isNotEnoughArgs = checkArgsNumber(command, args.length);
 
     switch (command) {
+      case "up":
+        currentDir = up(currentDir);
+        console.log(`You are currently in ${currentDir}`);
+        rl.prompt();
+        break;
       case "ls":
         list(currentDir);
         rl.prompt();
