@@ -13,6 +13,7 @@ import { read } from "./read.js";
 import { create } from "./create.js";
 import { rename } from "./rename.js";
 import { copy } from "./copy.js";
+import { move } from "./move.js";
 
 const start = async () => {
   const args = process.argv.slice(2);
@@ -71,6 +72,17 @@ const start = async () => {
       case "cp":
         if (!isNotEnoughArgs) {
           copy(
+            path.resolve(currentDir, trimUrl(args[0])),
+            path.resolve(currentDir, trimUrl(args[1]))
+          );
+        } else {
+          console.log(isNotEnoughArgs);
+        }
+        rl.prompt();
+        break;
+      case "mv":
+        if (!isNotEnoughArgs) {
+          move(
             path.resolve(currentDir, trimUrl(args[0])),
             path.resolve(currentDir, trimUrl(args[1]))
           );

@@ -13,6 +13,8 @@ const RENAME_INFO_MESSAGE = "rn path_to_file new_filename";
 const RENAME_ARGUMENTS_COUNT = 2;
 const COPY_INFO_MESSAGE = "cp path_to_file path_to_new_directory";
 const COPY_ARGUMENTS_COUNT = 2;
+const MOVE_INFO_MESSAGE = "mv path_to_file path_to_new_directory";
+const MOVE_ARGUMENTS_COUNT = 2;
 
 export const checkArgsNumber = (command, num) => {
   if (command === "cat" && num < READ_ARGUMENTS_COUNT) {
@@ -26,6 +28,9 @@ export const checkArgsNumber = (command, num) => {
   }
   if (command === "cp" && num < COPY_ARGUMENTS_COUNT) {
     return `${START_INFO_MESSAGE} ${COPY_INFO_MESSAGE}`;
+  }
+  if (command === "mv" && num < MOVE_ARGUMENTS_COUNT) {
+    return `${START_INFO_MESSAGE} ${MOVE_INFO_MESSAGE}`;
   }
   if (command === "cat" && num < READ_ARGUMENTS_COUNT) {
     return `${START_INFO_MESSAGE} ${READ_INFO_MESSAGE}`;
