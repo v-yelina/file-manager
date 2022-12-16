@@ -18,6 +18,7 @@ import { deleteFile } from "./commands/delete.js";
 import { up } from "./commands/up.js";
 import { welcome } from "./welcome.js";
 import { cd } from "./commands/cd.js";
+import { removeQuotes } from "./utils/removeQuotes.js";
 
 const start = async () => {
   const args = process.argv.slice(2);
@@ -36,7 +37,8 @@ const start = async () => {
   rl.on("line", (line) => {
     const commandArr = line.trim().split(" ");
     const command = commandArr[0];
-    const args = commandArr.slice(1);
+    const args = removeQuotes(commandArr.slice(1));
+
     const isNotEnoughArgs = checkArgsNumber(command, args.length);
 
     switch (command) {
@@ -166,7 +168,6 @@ const start = async () => {
         rl.prompt();
         break;
       case ".exit":
-        console.log(`\nYou are currently in ${currentDir}`);
         rl.close();
         break;
       default:
