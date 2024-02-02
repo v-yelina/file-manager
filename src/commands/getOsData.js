@@ -4,7 +4,8 @@ export const getOsData = (arg) => {
   switch (arg) {
     case "EOL":
       console.log("Your default system End-Of-Line:");
-      console.log(JSON.stringify(os.EOL));
+      console.log(os.EOL);
+      console.log("Or " + JSON.stringify(os.EOL));
       break;
     case "cpus":
       console.log("Your host machine CPUs info:");
