@@ -9,9 +9,9 @@ export const getOsData = (arg) => {
       break;
     case "cpus":
       console.log("Your host machine CPUs info:");
-      console.log(
+      console.table(
         os.cpus().map((cpu) => {
-          return { model: cpu.model, speed: cpu.speed };
+          return { model: cpu.model, speed_GHz: (cpu.speed / 1000).toFixed(2) };
         })
       );
       break;
