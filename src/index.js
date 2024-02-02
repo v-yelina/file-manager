@@ -22,7 +22,10 @@ import { removeQuotes } from "./utils/removeQuotes.js";
 
 const start = async () => {
   const args = process.argv.slice(2);
-  const username = args[0].startsWith("--username") ? args[0].split("=")[1] : undefined;
+  const username =
+    args.length > 0 && args[0].startsWith("--username")
+      ? args[0].split("=")[1]
+      : "Mystery Explorer";
   let currentDir = os.homedir();
 
   welcome(username, currentDir);
