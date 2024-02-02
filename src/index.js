@@ -157,19 +157,21 @@ const start = async () => {
         if (!isNotEnoughArgs) {
           compress(
             path.resolve(currentDir, trimUrl(args[0])),
-            path.resolve(currentDir, trimUrl(args[1]))
+            path.resolve(currentDir, trimUrl(args[1])),
+            currentDir
           );
         } else {
           console.log(isNotEnoughArgs);
+          console.log(`\nYou are currently in ${currentDir}`);
         }
-        console.log(`\nYou are currently in ${currentDir}`);
         rl.prompt();
         break;
       case "decompress":
         if (!isNotEnoughArgs) {
           decompress(
             path.resolve(currentDir, trimUrl(args[0])),
-            path.resolve(currentDir, trimUrl(args[1]))
+            path.resolve(currentDir, trimUrl(args[1])),
+            currentDir
           );
         } else {
           console.log(isNotEnoughArgs);

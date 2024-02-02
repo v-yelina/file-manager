@@ -2,7 +2,7 @@ import fs from "fs";
 import zlib from "zlib";
 import { errorHandler } from "../utils/errorHandler.js";
 
-export const decompress = (fileToDecompressUrl, destinationFileUrl) => {
+export const decompress = (fileToDecompressUrl, destinationFileUrl, currentDir) => {
   const readable = fs.createReadStream(fileToDecompressUrl);
   const writable = fs.createWriteStream(destinationFileUrl);
 
@@ -14,6 +14,7 @@ export const decompress = (fileToDecompressUrl, destinationFileUrl) => {
     .on("finish", () => {
       console.log("Successfully done decompessing");
       writable.end();
+      console.log(`\nYou are currently in ${currentDir}`);
     });
 
   readable.on("error", (err) => {
