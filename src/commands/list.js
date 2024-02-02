@@ -11,6 +11,7 @@ export const list = async (dirUrl) => {
       });
       console.log("\n");
       console.table(filesInfo.sort((a, b) => a.Type.localeCompare(b.Type) || b.Name - a.Name));
+      console.log(`\nYou are currently in ${dirUrl}`);
     })
     .catch((err) => {
       errorHandler(err);

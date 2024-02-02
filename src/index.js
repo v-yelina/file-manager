@@ -19,6 +19,7 @@ import { up } from "./commands/up.js";
 import { welcome } from "./welcome.js";
 import { cd } from "./commands/cd.js";
 import { removeQuotes } from "./utils/removeQuotes.js";
+import { errorHandler } from "./utils/errorHandler.js";
 
 const start = async () => {
   const args = process.argv.slice(2);
@@ -52,16 +53,27 @@ const start = async () => {
         break;
       case "cd":
         if (!isNotEnoughArgs) {
-          currentDir = cd(currentDir, trimUrl(args[0]));
+          cd(currentDir, trimUrl(args[0]))
+            .then((newDir) => {
+              if (newDir !== null) {
+                currentDir = newDir;
+              }
+            })
+            .catch((error) => {
+              errorHandler(error);
+            })
+            .finally(() => {
+              console.log(`\nYou are currently in ${currentDir}`);
+            });
         } else {
           console.log(isNotEnoughArgs);
+          console.log(`\nYou are currently in ${currentDir}`);
         }
-        console.log(`\nYou are currently in ${currentDir}`);
+
         rl.prompt();
         break;
       case "ls":
         list(currentDir);
-        console.log(`\nYou are currently in ${currentDir}`);
         rl.prompt();
         break;
       case "cat":
