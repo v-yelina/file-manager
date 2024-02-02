@@ -146,11 +146,11 @@ const start = async () => {
         break;
       case "hash":
         if (!isNotEnoughArgs) {
-          calculateHash(path.resolve(currentDir, trimUrl(args[0])));
+          calculateHash(path.resolve(currentDir, trimUrl(args[0])), currentDir);
         } else {
           console.log(isNotEnoughArgs);
+          console.log(`\nYou are currently in ${currentDir}`);
         }
-        console.log(`\nYou are currently in ${currentDir}`);
         rl.prompt();
         break;
       case "compress":
