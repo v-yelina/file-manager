@@ -78,65 +78,69 @@ const start = async () => {
         break;
       case "cat":
         if (!isNotEnoughArgs) {
-          read(path.resolve(currentDir, trimUrl(args[0])));
+          read(path.resolve(currentDir, trimUrl(args[0])), currentDir);
         } else {
           console.log(isNotEnoughArgs);
+          console.log(`\nYou are currently in ${currentDir}`);
         }
-        console.log(`\nYou are currently in ${currentDir}`);
         rl.prompt();
         break;
       case "add":
         if (!isNotEnoughArgs) {
-          create(path.resolve(currentDir, trimUrl(args[0])));
+          create(path.resolve(currentDir, trimUrl(args[0])), currentDir);
         } else {
           console.log(isNotEnoughArgs);
+          console.log(`\nYou are currently in ${currentDir}`);
         }
-        console.log(`\nYou are currently in ${currentDir}`);
         rl.prompt();
         break;
       case "rn":
         if (!isNotEnoughArgs) {
           rename(
             path.resolve(currentDir, trimUrl(args[0])),
-            path.resolve(currentDir, trimUrl(args[1]))
+            path.resolve(currentDir, trimUrl(args[1])),
+            currentDir
           );
         } else {
           console.log(isNotEnoughArgs);
+          console.log(`\nYou are currently in ${currentDir}`);
         }
-        console.log(`\nYou are currently in ${currentDir}`);
+
         rl.prompt();
         break;
       case "cp":
         if (!isNotEnoughArgs) {
           copy(
             path.resolve(currentDir, trimUrl(args[0])),
-            path.resolve(currentDir, trimUrl(args[1]))
+            path.resolve(currentDir, trimUrl(args[1])),
+            currentDir
           );
         } else {
           console.log(isNotEnoughArgs);
+          console.log(`\nYou are currently in ${currentDir}`);
         }
-        console.log(`\nYou are currently in ${currentDir}`);
         rl.prompt();
         break;
       case "mv":
         if (!isNotEnoughArgs) {
           move(
             path.resolve(currentDir, trimUrl(args[0])),
-            path.resolve(currentDir, trimUrl(args[1]))
+            path.resolve(currentDir, trimUrl(args[1])),
+            currentDir
           );
         } else {
           console.log(isNotEnoughArgs);
+          console.log(`\nYou are currently in ${currentDir}`);
         }
-        console.log(`\nYou are currently in ${currentDir}`);
         rl.prompt();
         break;
       case "rm":
         if (!isNotEnoughArgs) {
-          deleteFile(path.resolve(currentDir, trimUrl(args[0])));
+          deleteFile(path.resolve(currentDir, trimUrl(args[0])), currentDir);
         } else {
           console.log(isNotEnoughArgs);
+          console.log(`\nYou are currently in ${currentDir}`);
         }
-        console.log(`\nYou are currently in ${currentDir}`);
         rl.prompt();
         break;
       case "os":

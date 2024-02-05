@@ -1,7 +1,7 @@
 import fs from "fs";
 import { errorHandler } from "../utils/errorHandler.js";
 
-export const rename = async (currentFileName, newFileName) => {
+export const rename = async (currentFileName, newFileName, currentDir) => {
   fs.access(currentFileName, fs.constants.F_OK, (err) => {
     if (err) {
       errorHandler(err);
@@ -13,6 +13,7 @@ export const rename = async (currentFileName, newFileName) => {
               errorHandler(err);
             } else {
               console.log(`${currentFileName} is renamed to ${newFileName}`);
+              console.log(`\nYou are currently in ${currentDir}`);
             }
           });
         } else {
